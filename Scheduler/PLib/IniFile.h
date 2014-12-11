@@ -45,6 +45,6 @@ private:
 	inline const char* getValue(const TSection* pSec, const char* szP);
 	
 };
-} //namespace comLib
+} //namespace pLib
 
 #endif // !defined(AFX_TTINIFILE_IMP_H__756960FC_834A_45A8_B4E9_2FA2398A80FC__INCLUDED_)
