@@ -4,8 +4,10 @@
   Author:yangrenke    Version : 1.0       Date:2014/07/13
   Description:  
   History:
-  <author>      <time>          <version>       <desc>
-  yangrenke     2014/07/13      1.0             build this moudle
+  <author>       <time>       <version>     <desc>
+  yangrenke     2014/07/13      1.0       build this moudle
+  yangrenke     2014/12/12      2.0       修改了Init接口，增加了两个数据域吗，用以记录改Job的ID和在任务链中的位置
+
 ******************************************************************/
 
 
@@ -29,9 +31,13 @@
   Others:        
 *************************************************************/ 
 
-int  TaskThread::Init( string strCommand )
+int  TaskThread::Init( string strCommand, int nId, int nLevel )
 {
-	a_strCommand = strCommand;
+
+	m_strCommand = strCommand;
+	m_nJobId = nId;
+	m_nLevel = nLevel;
+	
 }
 
 
@@ -53,9 +59,18 @@ int  TaskThread::Init( string strCommand )
 int  TaskThread::operator()()
 {
 
-	system( a_strCommand.c_str() );
-	log.Info("TaskThread::operator(): Task  [%s]  finished!", a_strCommand.c_str());
+	int nR = system( m_strCommand.c_str() );
+	if( nR < 0 )
+	{
+		//错误处理
+		
 
+
+	}
+
+	log.Info("TaskThread::operator(): Task  [%s]  finished!", m_strCommand.c_str());
+
+	return 0;
 }
 
 

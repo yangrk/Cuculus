@@ -13,7 +13,8 @@
 
     History:
       <author>  <time>   <version >   <desc>
-      yangrenke   2014/07/13     1.0     build this moudle  
+      yangrenke   2014/07/13     1.0     build this moudle 
+      yangrenke   2014/12/12     2.0     修改了Init接口，增加了两个数据域吗，用以记录改Job的ID和在任务链中的位置
 
 *************************************************************/
 
@@ -36,13 +37,15 @@ public:
 	TaskThread(){;};
 	~TaskThread(){;};
 
-	int Init( string );	
+	int Init( string, int, int );	
 	int operator()();
 
 
 private:
 
-	string	a_strCommand;
+	string	m_strCommand;
+	int  m_nJobId;//在数据库中的ID
+	int m_nLevel;//在任务链中的位置
 	Logger      log;
 	
 };

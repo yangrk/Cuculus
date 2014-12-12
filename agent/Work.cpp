@@ -248,7 +248,7 @@ int Work::DoTask( )
 			}
 	
 			
-			pthNode[i].Init( command );
+			pthNode[i].Init( command, pNode->nId, n );
                         tg.create_thread( boost::ref(pthNode[i]) );
 		
 		}//for

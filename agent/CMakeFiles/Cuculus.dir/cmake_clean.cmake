@@ -5,9 +5,9 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/Cuculus.dir/Work.cpp.o"
   "CMakeFiles/Cuculus.dir/YearWork.cpp.o"
   "CMakeFiles/Cuculus.dir/ConfSock.cpp.o"
-  "CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/Scheduler/PLib/Logger_impl.cpp.o"
-  "CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/Scheduler/PLib/IniFile.cpp.o"
-  "CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/Scheduler/PLib/Logger.cpp.o"
+  "CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/Logger_impl.cpp.o"
+  "CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/IniFile.cpp.o"
+  "CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/Logger.cpp.o"
   "Cuculus.pdb"
   "Cuculus"
 )
