@@ -1,1 +1,0 @@
-/home/yangrk/dataplat_0.2/Scheduler/work/DayTask/CMakeFiles/DayWork.dir
