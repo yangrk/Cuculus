@@ -32,7 +32,7 @@ int main( )
 {
 
 	// init ini file
-	string strIniFilePath = "../ini/node.ini";
+	string strIniFilePath = "../INI/Cuculus.ini";
 
 	IniFile ini;
 	ini.LoadIniFile( strIniFilePath.c_str() );
@@ -41,7 +41,7 @@ int main( )
 	// init log
 	InitLog( ini );
 	Logger log;
-        log.Info("InitLog(): Cuculus Service is running!");	
+        log.Info("main(): Cuculus server is running!");	
 
 
 	//init DBBase Config
@@ -55,18 +55,25 @@ int main( )
 	int nResult = CreateJobHash( dbCon );
 	if( 0 != nResult )
 	{
+		log.Info("main(): there isn't any job!");
 		return -1;
 	}	
 
 
+	boost::thread_group tg;
 
 	// start the year work thread
 	YearWork yWork;
 	int nYR = yWork.Init( strIniFilePath );
 	if( 0 == nYR )
 	{
-		boost::thread yearthread( boost::ref(yWork) );
+		//boost::thread yearthread( boost::ref(yWork) );
+		tg.create_thread( boost::ref(yWork) );
 	} 
+	
+	
+	tg.join_all();
+
 
 	/*
 	time_t tYearTime;
@@ -78,6 +85,8 @@ int main( )
 		boost::thread yearthread( boost::ref(yearTime) );
 	}
 	*/
+
+	
 
 	return 0;
 
@@ -118,7 +127,7 @@ int CreateJobHash( DBConfig & dbC )
 		if( !bR )
 		{
 			// fail to connect db
-			 log.Error("CreateJobHash(): connect to db failed!");
+			 log.Error("CreateJobHash(): step1  connect to db failed!");
                         return -1;		
 
 		}
@@ -126,7 +135,7 @@ int CreateJobHash( DBConfig & dbC )
 	}
 	catch(const mysqlpp::Exception& er)
         {
-                log.Error("CreateJobHash(): Error:%s[%d:%d]\n",(er.what()),__FILE__,__LINE__);
+                log.Error("CreateJobHash(): step1  Error:%s[%d:%d]\n",(er.what()),__FILE__,__LINE__);
                 return -1;
         }
 
@@ -161,19 +170,19 @@ int CreateJobHash( DBConfig & dbC )
 	catch (const mysqlpp::ConnectionFailed& ce)
         {
 		// Something went wrong with the db connection
-		log.Error("CreateJobHash():Connection failed:%s[%d:%d]\n",(ce.what()),__FILE__,__LINE__);
+		log.Error("CreateJobHash(): step2  Connection failed:%s[%d:%d]\n",(ce.what()),__FILE__,__LINE__);
                 return -1;
 	}
 	catch (const mysqlpp::BadQuery& e)
         {	
 		// Something went wrong with the SQL query
-		log.Error("CreateJobHash(): Query failed:%s[%d:%d]\n",(e.what()),__FILE__,__LINE__);
+		log.Error("CreateJobHash(): step2  Query failed:%s[%d:%d]\n",(e.what()),__FILE__,__LINE__);
                 return -1;
 	}
 	catch (const mysqlpp::Exception& er)
         {
 		// Catch-all for any other MySQL++ exceptions
-		log.Error("CreateJobHash() : Error:%s[%d:%d]\n",(er.what()),__FILE__,__LINE__);
+		log.Error("CreateJobHash() : step2  Error:%s[%d:%d]\n",(er.what()),__FILE__,__LINE__);
                 return -1;
 
 	}

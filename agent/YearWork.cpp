@@ -72,6 +72,7 @@ int YearWork::Init( string strIniFilePath )
 /************************************************************
   Function:  YearWork::InitLog()
   Description:    
+	初始化Log配置
   Calls:         
   Called By:     
   Table Accessed: 
@@ -108,8 +109,9 @@ int YearWork::InitLog()
 
 /************************************************************
 
-  Function:  YearWork::GetConfig()
+  Function:  YearWork::GetTaskConfig()
   Description:    
+	从数据库表中获取任务链的配置信息，结果存放在yearJobBuf全局共享缓存里面。
   Calls:         
   Called By:     
   Table Accessed: 
@@ -215,7 +217,7 @@ int YearWork::TimerFunc( struct tm &tSetTime )
 	tbaseTime += boost::posix_time::seconds(nInterval);
 	tDeadTimer.expires_at(tbaseTime);
 
-	log.Debug(" YearWork::TimerFunc: Timer Starts! ");
+	log.Debug(" YearWork::TimerFunc(): Timer Starts! ");
 
 	while(1)
         {
@@ -271,22 +273,21 @@ int  YearWork::operator()()
 		
 		//解析任务链
 		vector<string> vLevelCommand;
-		//vector<string> TaskConfigV[MAX_LEVEL];
-
+	
 		int nResult = SplitCommand( pWTC->strTaskChain, ";", &vLevelCommand );
+
+		
 		if( 0 == nResult  )
 		{
 			for( int i=0; i++; i<vLevelCommand.size() )
 			{
-				SplitCommand( vLevelCommand[i], ";", &m_TaskChainV[i] );
+				SplitCommand( vLevelCommand[i], ",", &m_TaskChainV[i] );
 			}			
 		}
 		
 
 		//从数据库获取任务链中的任务的配置信息
 		GetJobConfig();
-
-
 
 
 		//启动定时器服务

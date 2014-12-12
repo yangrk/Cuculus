@@ -55,6 +55,7 @@ int Work::Init( string strIniFilePath )
   
   Function:  Work::InitIni()
   Description:    
+	初始化配置文件路径
   Calls:         
   Called By:     
   Table Accessed: 
@@ -78,6 +79,7 @@ void Work::InitIni( string &strIniFilePath )
 /************************************************************
   Function:  Work::InitPath()
   Description:    
+	初始化框架组件路径
   Calls:         
   Called By:     
   Table Accessed: 
@@ -96,7 +98,7 @@ void Work::InitPath()
 {
 	
 	string strHadoopPath = m_ini.GetString("TASK", "HADOOP_PATH", "/usr/local/hadoop/bin");
-        string strHivePath = m_ini.GetString("TASK", "HIVE_PATH", "/usr/local/hadoop/bin");
+        string strHivePath = m_ini.GetString("TASK", "HIVE_PATH", "/usr/local/hive/bin");
 
 	m_serverPath.strHadoopPath = strHadoopPath;
         m_serverPath.strHivePath = strHivePath;
@@ -111,6 +113,7 @@ void Work::InitPath()
 /************************************************************
   Function:  Work::InitDBConnection()
   Description:    
+	初始化数据库连接
   Calls:         
   Called By:     
   Table Accessed: 
@@ -164,7 +167,7 @@ int Work::InitDBConnection()
 
 /************************************************************
  
-  Function:  Work::DoTask
+  Function:  Work::DoTask()
   Description:    
 	启动任务
   Calls:         
@@ -330,8 +333,10 @@ int  Work::SplitCommand(const string& srcCommand, string strDelimit, vector<stri
 int Work::GetJobConfig()
 {
 
+	int nLevelCount = 1;
 	for( int n=0; n<MAX_LEVEL; n++ )
         {
+		nLevelCount++;
 		
 		int nSize = m_TaskChainV[n].size();
                 if( nSize = 0 )
@@ -351,7 +356,7 @@ int Work::GetJobConfig()
 		}
 	}
 
-
+	log.Info("Work::GetJobConfig: get job from hashtable success. total levels: %d\n", nLevelCount);
 	return 0;
 }
 
