@@ -85,6 +85,7 @@ int YearWork::Init( string strIniFilePath )
 ************************************************************/
 int YearWork::InitLog()
 {
+	/*
 	string strLogFile = m_ini.GetString("YEARLOG","LOG_FILE","../Log/Year");
         int nLogLevel = m_ini.GetInteger("YEARLOG","LOG_LEVEL",9);
         int nLogType = m_ini.GetInteger("YEARLOG","LOG_TYPE",1);
@@ -99,9 +100,10 @@ int YearWork::InitLog()
         LogManager::SetLogFilePath(strLogFile.c_str());
         LogManager::Open("YearWork", nLogType);
         LogManager::SetLogLevel(nLogLevel);
+	*/
 
-        Logger log;
         log.Info("YearWork::Init():service YearWork is running!");
+	
 
 	return 0;
 }
@@ -213,33 +215,46 @@ int YearWork::TimerFunc( struct tm &tSetTime )
 	boost::asio::io_service io;
         boost::asio::deadline_timer tDeadTimer(io);
 
-        boost::posix_time::ptime tbaseTime  = boost::posix_time::from_time_t( std::time(NULL) );
-	tbaseTime += boost::posix_time::seconds(nInterval);
-	tDeadTimer.expires_at(tbaseTime);
+        boost::posix_time::ptime tBaseTime  = boost::posix_time::from_time_t( std::time(NULL) );
+	tBaseTime += boost::posix_time::seconds(nInterval);
+	tDeadTimer.expires_at(tBaseTime);
 
-	log.Debug(" YearWork::TimerFunc(): Timer Starts! ");
+	log.Debug(" YearWork::TimerFunc(): Timer Starts!,[year=%d,month=%d,day=%d,hour=%d,min=%d,sec=%d]",tSetTime.tm_year,tSetTime.tm_mon,tSetTime.tm_mday,tSetTime.tm_hour,tSetTime.tm_min,tSetTime.tm_sec);
 
 	while(1)
         {
                 tDeadTimer.wait();
+
                 boost::posix_time::ptime expires = tDeadTimer.expires_at();
 
                 long nTotalSeconds = expires.time_of_day().total_seconds();
-                if( (nTotalSeconds % 60) == 59)
-                {
+		long nTotalMill = expires.time_of_day().total_milliseconds();
+                
+		//if( (nTotalSeconds%60) == 59 )
+                //{
          		//定时器到点
-			DoTask();						
+			DoTask();
 
-		}
 	
+			//计算到下次的间隔时间
+			time_t tN;
+                	tN = time(NULL);
+                	tSetTime.tm_year = tSetTime.tm_year+1;
+			time_t tNextSet = mktime( &tSetTime );
+                	long nI = difftime( tNextSet, tN );
+                	tBaseTime += boost::posix_time::seconds(nI);
+                	tDeadTimer.expires_at(tBaseTime);
 
-		//计算到下次的间隔时间
-		time_t tN;
-        	tN = time(NULL);
-		tSetTime.tm_year = tSetTime.tm_year+1;
-		long nI = difftime( tSet, tN );
-		tbaseTime += boost::posix_time::seconds(nI);
-        	tDeadTimer.expires_at(tbaseTime);
+		log.Debug(" YearWork::TimerFunc(): Timer Starts!,[year=%d,month=%d,day=%d,hour=%d,min=%d,sec=%d]",tSetTime.tm_year,tSetTime.tm_mon,tSetTime.tm_mday,tSetTime.tm_hour,tSetTime.tm_min,tSetTime.tm_sec);
+						
+		//}
+		//else
+		//{
+			//tBaseTime +=boost::posix_time::milliseconds(100);
+		//	tDeadTimer.expires_at(tBaseTime);
+		//}
+
+
 	}
 
 
@@ -276,13 +291,17 @@ int  YearWork::operator()()
 	
 		int nResult = SplitCommand( pWTC->strTaskChain, ";", &vLevelCommand );
 
+		printf(" vLevelCommand size: %d\n", vLevelCommand.size());
+
 		
 		if( 0 == nResult  )
 		{
-			for( int i=0; i++; i<vLevelCommand.size() )
+			for( int i=0; i<vLevelCommand.size(); i++ )
 			{
 				SplitCommand( vLevelCommand[i], ",", &m_TaskChainV[i] );
-			}			
+			
+				printf(" m_TaskChainV[%d] size: %d\n", i, m_TaskChainV[i].size());
+			}
 		}
 		
 

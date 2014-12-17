@@ -183,6 +183,7 @@ int Work::InitDBConnection()
 
 int Work::DoTask( )
 {
+
 	string strHadoopPath =  m_serverPath.strHadoopPath;
         string strHivePath =  m_serverPath.strHivePath;
 
@@ -200,10 +201,13 @@ int Work::DoTask( )
 	for( int n=0; n<MAX_LEVEL; n++ )
         {
 		int nSize = m_TaskConfigV[n].size();
-                if( nSize = 0 )
+                if( 0 == nSize )
                 {
                         continue;
                 }
+	
+		printf("Level:%d, nSize:%d\n", n, nSize);
+
 
 		TaskThread pthNode[nSize];
 
@@ -336,24 +340,30 @@ int Work::GetJobConfig()
 	int nLevelCount = 1;
 	for( int n=0; n<MAX_LEVEL; n++ )
         {
-		nLevelCount++;
 		
 		int nSize = m_TaskChainV[n].size();
-                if( nSize = 0 )
+                if( 0 == nSize )
                 {
                         continue;
                 }
+		else
+		{
+			nLevelCount++;
+		}
 
 		plib::WorkJobConfig ConfigSet;
 		vector<string>::iterator pNode = m_TaskChainV[n].begin();
-		for( int i=0 ; pNode != m_TaskChainV[n].end(); pNode++, i++ )
+		for( ; pNode != m_TaskChainV[n].end(); pNode++ )
                 {
 			JobItemHash::iterator pIter;
 			int nId = std::atoi( pNode->c_str());	
 			pIter = jobHash.find( nId );
-			m_TaskConfigV[i].push_back( pIter->second );
+			
+			m_TaskConfigV[n].push_back( pIter->second );
 
 		}
+
+		printf("m_TaskConfigV[%d] size:%d\n", n, m_TaskConfigV[n].size());
 	}
 
 	log.Info("Work::GetJobConfig: get job from hashtable success. total levels: %d\n", nLevelCount);
