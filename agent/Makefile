@@ -108,6 +108,78 @@ Cuculus/fast:
 	$(MAKE) -f CMakeFiles/Cuculus.dir/build.make CMakeFiles/Cuculus.dir/build
 .PHONY : Cuculus/fast
 
+ConServer.o: ConServer.cpp.o
+.PHONY : ConServer.o
+
+# target to build an object file
+ConServer.cpp.o:
+	$(MAKE) -f CMakeFiles/Cuculus.dir/build.make CMakeFiles/Cuculus.dir/ConServer.cpp.o
+.PHONY : ConServer.cpp.o
+
+ConServer.i: ConServer.cpp.i
+.PHONY : ConServer.i
+
+# target to preprocess a source file
+ConServer.cpp.i:
+	$(MAKE) -f CMakeFiles/Cuculus.dir/build.make CMakeFiles/Cuculus.dir/ConServer.cpp.i
+.PHONY : ConServer.cpp.i
+
+ConServer.s: ConServer.cpp.s
+.PHONY : ConServer.s
+
+# target to generate assembly for a file
+ConServer.cpp.s:
+	$(MAKE) -f CMakeFiles/Cuculus.dir/build.make CMakeFiles/Cuculus.dir/ConServer.cpp.s
+.PHONY : ConServer.cpp.s
+
+ConSession.o: ConSession.cpp.o
+.PHONY : ConSession.o
+
+# target to build an object file
+ConSession.cpp.o:
+	$(MAKE) -f CMakeFiles/Cuculus.dir/build.make CMakeFiles/Cuculus.dir/ConSession.cpp.o
+.PHONY : ConSession.cpp.o
+
+ConSession.i: ConSession.cpp.i
+.PHONY : ConSession.i
+
+# target to preprocess a source file
+ConSession.cpp.i:
+	$(MAKE) -f CMakeFiles/Cuculus.dir/build.make CMakeFiles/Cuculus.dir/ConSession.cpp.i
+.PHONY : ConSession.cpp.i
+
+ConSession.s: ConSession.cpp.s
+.PHONY : ConSession.s
+
+# target to generate assembly for a file
+ConSession.cpp.s:
+	$(MAKE) -f CMakeFiles/Cuculus.dir/build.make CMakeFiles/Cuculus.dir/ConSession.cpp.s
+.PHONY : ConSession.cpp.s
+
+ConTaskHandle.o: ConTaskHandle.cpp.o
+.PHONY : ConTaskHandle.o
+
+# target to build an object file
+ConTaskHandle.cpp.o:
+	$(MAKE) -f CMakeFiles/Cuculus.dir/build.make CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.o
+.PHONY : ConTaskHandle.cpp.o
+
+ConTaskHandle.i: ConTaskHandle.cpp.i
+.PHONY : ConTaskHandle.i
+
+# target to preprocess a source file
+ConTaskHandle.cpp.i:
+	$(MAKE) -f CMakeFiles/Cuculus.dir/build.make CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.i
+.PHONY : ConTaskHandle.cpp.i
+
+ConTaskHandle.s: ConTaskHandle.cpp.s
+.PHONY : ConTaskHandle.s
+
+# target to generate assembly for a file
+ConTaskHandle.cpp.s:
+	$(MAKE) -f CMakeFiles/Cuculus.dir/build.make CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.s
+.PHONY : ConTaskHandle.cpp.s
+
 ConfSock.o: ConfSock.cpp.o
 .PHONY : ConfSock.o
 
@@ -155,6 +227,30 @@ CuculusTimer.s: CuculusTimer.cpp.s
 CuculusTimer.cpp.s:
 	$(MAKE) -f CMakeFiles/Cuculus.dir/build.make CMakeFiles/Cuculus.dir/CuculusTimer.cpp.s
 .PHONY : CuculusTimer.cpp.s
+
+DoTask.o: DoTask.cpp.o
+.PHONY : DoTask.o
+
+# target to build an object file
+DoTask.cpp.o:
+	$(MAKE) -f CMakeFiles/Cuculus.dir/build.make CMakeFiles/Cuculus.dir/DoTask.cpp.o
+.PHONY : DoTask.cpp.o
+
+DoTask.i: DoTask.cpp.i
+.PHONY : DoTask.i
+
+# target to preprocess a source file
+DoTask.cpp.i:
+	$(MAKE) -f CMakeFiles/Cuculus.dir/build.make CMakeFiles/Cuculus.dir/DoTask.cpp.i
+.PHONY : DoTask.cpp.i
+
+DoTask.s: DoTask.cpp.s
+.PHONY : DoTask.s
+
+# target to generate assembly for a file
+DoTask.cpp.s:
+	$(MAKE) -f CMakeFiles/Cuculus.dir/build.make CMakeFiles/Cuculus.dir/DoTask.cpp.s
+.PHONY : DoTask.cpp.s
 
 TaskThread.o: TaskThread.cpp.o
 .PHONY : TaskThread.o
@@ -300,6 +396,30 @@ home/yangrk/Cuculus/PLib/Logger_impl.cpp.s:
 	$(MAKE) -f CMakeFiles/Cuculus.dir/build.make CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/Logger_impl.cpp.s
 .PHONY : home/yangrk/Cuculus/PLib/Logger_impl.cpp.s
 
+home/yangrk/Cuculus/PLib/ProtoMsg.pb.o: home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.o
+.PHONY : home/yangrk/Cuculus/PLib/ProtoMsg.pb.o
+
+# target to build an object file
+home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.o:
+	$(MAKE) -f CMakeFiles/Cuculus.dir/build.make CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.o
+.PHONY : home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.o
+
+home/yangrk/Cuculus/PLib/ProtoMsg.pb.i: home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.i
+.PHONY : home/yangrk/Cuculus/PLib/ProtoMsg.pb.i
+
+# target to preprocess a source file
+home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.i:
+	$(MAKE) -f CMakeFiles/Cuculus.dir/build.make CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.i
+.PHONY : home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.i
+
+home/yangrk/Cuculus/PLib/ProtoMsg.pb.s: home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.s
+.PHONY : home/yangrk/Cuculus/PLib/ProtoMsg.pb.s
+
+# target to generate assembly for a file
+home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.s:
+	$(MAKE) -f CMakeFiles/Cuculus.dir/build.make CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.s
+.PHONY : home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -333,12 +453,24 @@ help:
 	@echo "... Cuculus"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... ConServer.o"
+	@echo "... ConServer.i"
+	@echo "... ConServer.s"
+	@echo "... ConSession.o"
+	@echo "... ConSession.i"
+	@echo "... ConSession.s"
+	@echo "... ConTaskHandle.o"
+	@echo "... ConTaskHandle.i"
+	@echo "... ConTaskHandle.s"
 	@echo "... ConfSock.o"
 	@echo "... ConfSock.i"
 	@echo "... ConfSock.s"
 	@echo "... CuculusTimer.o"
 	@echo "... CuculusTimer.i"
 	@echo "... CuculusTimer.s"
+	@echo "... DoTask.o"
+	@echo "... DoTask.i"
+	@echo "... DoTask.s"
 	@echo "... TaskThread.o"
 	@echo "... TaskThread.i"
 	@echo "... TaskThread.s"
@@ -357,6 +489,9 @@ help:
 	@echo "... home/yangrk/Cuculus/PLib/Logger_impl.o"
 	@echo "... home/yangrk/Cuculus/PLib/Logger_impl.i"
 	@echo "... home/yangrk/Cuculus/PLib/Logger_impl.s"
+	@echo "... home/yangrk/Cuculus/PLib/ProtoMsg.pb.o"
+	@echo "... home/yangrk/Cuculus/PLib/ProtoMsg.pb.i"
+	@echo "... home/yangrk/Cuculus/PLib/ProtoMsg.pb.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

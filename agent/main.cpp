@@ -14,15 +14,22 @@
 #include <stdlib.h>
 #include  "CuculusTimer.h"
 #include "YearWork.h"
+#include "ConTaskHandle.h"
+#include "ConServer.h"
 #include "CuculusInc.h"
 #include "PublicStruct.h"
+
 
 using namespace std;
 using namespace plib;
 
+
 JobItemHash  jobHash(1000);   
 
 ShareBuffer<WorkTaskConfig *> yearJobBuf(1000);
+ShareBuffer<string *> recieveData(1000);
+hash_set<int> HashSetYearTaskID(1000);
+
 
 void InitLog( IniFile & iniF );
 int CreateJobHash( DBConfig & dbC );
@@ -62,6 +69,22 @@ int main( )
 
 	boost::thread_group tg;
 
+		
+
+	// start the task's config handle thread
+	ConTaskHandle conTH;
+	int nTH = conTH.Init( strIniFilePath );
+	if( 0 == nTH )
+	{
+		 tg.create_thread( boost::ref(conTH) );
+	}
+	else
+	{
+	
+		return -1;
+	}
+
+
 	// start the year work thread
 	YearWork yWork;
 	int nYR = yWork.Init( strIniFilePath );
@@ -70,7 +93,17 @@ int main( )
 		//boost::thread yearthread( boost::ref(yWork) );
 		tg.create_thread( boost::ref(yWork) );
 	} 
+	else
+	{
+		return -1;
+	}	
+
 	
+	// start the net communication thread to accept the config
+	tcp::endpoint endpoint(tcp::v4(), 9106);
+        boost::asio::io_service io;
+        ConServer conIoServer( io, endpoint );
+	io.run();
 	
 	tg.join_all();
 

@@ -27,5 +27,5 @@ add_executable(Cuculus
                ${DC_SRCS}
               )
 
-target_link_libraries(Cuculus pthread boost_system boost_thread mysqlpp mysqlclient)
+target_link_libraries(Cuculus pthread protobuf  boost_system boost_thread mysqlpp mysqlclient)
 

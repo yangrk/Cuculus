@@ -115,9 +115,32 @@ CMakeFiles/Cuculus.dir/main.cpp.o.provides: CMakeFiles/Cuculus.dir/main.cpp.o.re
 
 CMakeFiles/Cuculus.dir/main.cpp.o.provides.build: CMakeFiles/Cuculus.dir/main.cpp.o
 
+CMakeFiles/Cuculus.dir/ConServer.cpp.o: CMakeFiles/Cuculus.dir/flags.make
+CMakeFiles/Cuculus.dir/ConServer.cpp.o: ConServer.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/yangrk/Cuculus/agent/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Cuculus.dir/ConServer.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Cuculus.dir/ConServer.cpp.o -c /home/yangrk/Cuculus/agent/ConServer.cpp
+
+CMakeFiles/Cuculus.dir/ConServer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Cuculus.dir/ConServer.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/yangrk/Cuculus/agent/ConServer.cpp > CMakeFiles/Cuculus.dir/ConServer.cpp.i
+
+CMakeFiles/Cuculus.dir/ConServer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Cuculus.dir/ConServer.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/yangrk/Cuculus/agent/ConServer.cpp -o CMakeFiles/Cuculus.dir/ConServer.cpp.s
+
+CMakeFiles/Cuculus.dir/ConServer.cpp.o.requires:
+.PHONY : CMakeFiles/Cuculus.dir/ConServer.cpp.o.requires
+
+CMakeFiles/Cuculus.dir/ConServer.cpp.o.provides: CMakeFiles/Cuculus.dir/ConServer.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Cuculus.dir/build.make CMakeFiles/Cuculus.dir/ConServer.cpp.o.provides.build
+.PHONY : CMakeFiles/Cuculus.dir/ConServer.cpp.o.provides
+
+CMakeFiles/Cuculus.dir/ConServer.cpp.o.provides.build: CMakeFiles/Cuculus.dir/ConServer.cpp.o
+
 CMakeFiles/Cuculus.dir/Work.cpp.o: CMakeFiles/Cuculus.dir/flags.make
 CMakeFiles/Cuculus.dir/Work.cpp.o: Work.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/yangrk/Cuculus/agent/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/yangrk/Cuculus/agent/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Cuculus.dir/Work.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Cuculus.dir/Work.cpp.o -c /home/yangrk/Cuculus/agent/Work.cpp
 
@@ -138,9 +161,32 @@ CMakeFiles/Cuculus.dir/Work.cpp.o.provides: CMakeFiles/Cuculus.dir/Work.cpp.o.re
 
 CMakeFiles/Cuculus.dir/Work.cpp.o.provides.build: CMakeFiles/Cuculus.dir/Work.cpp.o
 
+CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.o: CMakeFiles/Cuculus.dir/flags.make
+CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.o: ConTaskHandle.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/yangrk/Cuculus/agent/CMakeFiles $(CMAKE_PROGRESS_6)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.o -c /home/yangrk/Cuculus/agent/ConTaskHandle.cpp
+
+CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/yangrk/Cuculus/agent/ConTaskHandle.cpp > CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.i
+
+CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/yangrk/Cuculus/agent/ConTaskHandle.cpp -o CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.s
+
+CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.o.requires:
+.PHONY : CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.o.requires
+
+CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.o.provides: CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Cuculus.dir/build.make CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.o.provides.build
+.PHONY : CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.o.provides
+
+CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.o.provides.build: CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.o
+
 CMakeFiles/Cuculus.dir/YearWork.cpp.o: CMakeFiles/Cuculus.dir/flags.make
 CMakeFiles/Cuculus.dir/YearWork.cpp.o: YearWork.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/yangrk/Cuculus/agent/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/yangrk/Cuculus/agent/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Cuculus.dir/YearWork.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Cuculus.dir/YearWork.cpp.o -c /home/yangrk/Cuculus/agent/YearWork.cpp
 
@@ -163,7 +209,7 @@ CMakeFiles/Cuculus.dir/YearWork.cpp.o.provides.build: CMakeFiles/Cuculus.dir/Yea
 
 CMakeFiles/Cuculus.dir/ConfSock.cpp.o: CMakeFiles/Cuculus.dir/flags.make
 CMakeFiles/Cuculus.dir/ConfSock.cpp.o: ConfSock.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/yangrk/Cuculus/agent/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/yangrk/Cuculus/agent/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Cuculus.dir/ConfSock.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Cuculus.dir/ConfSock.cpp.o -c /home/yangrk/Cuculus/agent/ConfSock.cpp
 
@@ -184,9 +230,78 @@ CMakeFiles/Cuculus.dir/ConfSock.cpp.o.provides: CMakeFiles/Cuculus.dir/ConfSock.
 
 CMakeFiles/Cuculus.dir/ConfSock.cpp.o.provides.build: CMakeFiles/Cuculus.dir/ConfSock.cpp.o
 
+CMakeFiles/Cuculus.dir/ConSession.cpp.o: CMakeFiles/Cuculus.dir/flags.make
+CMakeFiles/Cuculus.dir/ConSession.cpp.o: ConSession.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/yangrk/Cuculus/agent/CMakeFiles $(CMAKE_PROGRESS_9)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Cuculus.dir/ConSession.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Cuculus.dir/ConSession.cpp.o -c /home/yangrk/Cuculus/agent/ConSession.cpp
+
+CMakeFiles/Cuculus.dir/ConSession.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Cuculus.dir/ConSession.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/yangrk/Cuculus/agent/ConSession.cpp > CMakeFiles/Cuculus.dir/ConSession.cpp.i
+
+CMakeFiles/Cuculus.dir/ConSession.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Cuculus.dir/ConSession.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/yangrk/Cuculus/agent/ConSession.cpp -o CMakeFiles/Cuculus.dir/ConSession.cpp.s
+
+CMakeFiles/Cuculus.dir/ConSession.cpp.o.requires:
+.PHONY : CMakeFiles/Cuculus.dir/ConSession.cpp.o.requires
+
+CMakeFiles/Cuculus.dir/ConSession.cpp.o.provides: CMakeFiles/Cuculus.dir/ConSession.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Cuculus.dir/build.make CMakeFiles/Cuculus.dir/ConSession.cpp.o.provides.build
+.PHONY : CMakeFiles/Cuculus.dir/ConSession.cpp.o.provides
+
+CMakeFiles/Cuculus.dir/ConSession.cpp.o.provides.build: CMakeFiles/Cuculus.dir/ConSession.cpp.o
+
+CMakeFiles/Cuculus.dir/DoTask.cpp.o: CMakeFiles/Cuculus.dir/flags.make
+CMakeFiles/Cuculus.dir/DoTask.cpp.o: DoTask.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/yangrk/Cuculus/agent/CMakeFiles $(CMAKE_PROGRESS_10)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Cuculus.dir/DoTask.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Cuculus.dir/DoTask.cpp.o -c /home/yangrk/Cuculus/agent/DoTask.cpp
+
+CMakeFiles/Cuculus.dir/DoTask.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Cuculus.dir/DoTask.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/yangrk/Cuculus/agent/DoTask.cpp > CMakeFiles/Cuculus.dir/DoTask.cpp.i
+
+CMakeFiles/Cuculus.dir/DoTask.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Cuculus.dir/DoTask.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/yangrk/Cuculus/agent/DoTask.cpp -o CMakeFiles/Cuculus.dir/DoTask.cpp.s
+
+CMakeFiles/Cuculus.dir/DoTask.cpp.o.requires:
+.PHONY : CMakeFiles/Cuculus.dir/DoTask.cpp.o.requires
+
+CMakeFiles/Cuculus.dir/DoTask.cpp.o.provides: CMakeFiles/Cuculus.dir/DoTask.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Cuculus.dir/build.make CMakeFiles/Cuculus.dir/DoTask.cpp.o.provides.build
+.PHONY : CMakeFiles/Cuculus.dir/DoTask.cpp.o.provides
+
+CMakeFiles/Cuculus.dir/DoTask.cpp.o.provides.build: CMakeFiles/Cuculus.dir/DoTask.cpp.o
+
+CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.o: CMakeFiles/Cuculus.dir/flags.make
+CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.o: /home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/yangrk/Cuculus/agent/CMakeFiles $(CMAKE_PROGRESS_11)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.o -c /home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc
+
+CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc > CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.i
+
+CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc -o CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.s
+
+CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.o.requires:
+.PHONY : CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.o.requires
+
+CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.o.provides: CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.o.requires
+	$(MAKE) -f CMakeFiles/Cuculus.dir/build.make CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.o.provides.build
+.PHONY : CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.o.provides
+
+CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.o.provides.build: CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.o
+
 CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/Logger_impl.cpp.o: CMakeFiles/Cuculus.dir/flags.make
 CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/Logger_impl.cpp.o: /home/yangrk/Cuculus/PLib/Logger_impl.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/yangrk/Cuculus/agent/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/yangrk/Cuculus/agent/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/Logger_impl.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/Logger_impl.cpp.o -c /home/yangrk/Cuculus/PLib/Logger_impl.cpp
 
@@ -209,7 +324,7 @@ CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/Logger_impl.cpp.o.provides.build
 
 CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/IniFile.cpp.o: CMakeFiles/Cuculus.dir/flags.make
 CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/IniFile.cpp.o: /home/yangrk/Cuculus/PLib/IniFile.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/yangrk/Cuculus/agent/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/yangrk/Cuculus/agent/CMakeFiles $(CMAKE_PROGRESS_13)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/IniFile.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/IniFile.cpp.o -c /home/yangrk/Cuculus/PLib/IniFile.cpp
 
@@ -232,7 +347,7 @@ CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/IniFile.cpp.o.provides.build: CM
 
 CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/Logger.cpp.o: CMakeFiles/Cuculus.dir/flags.make
 CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/Logger.cpp.o: /home/yangrk/Cuculus/PLib/Logger.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/yangrk/Cuculus/agent/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/yangrk/Cuculus/agent/CMakeFiles $(CMAKE_PROGRESS_14)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/Logger.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/Logger.cpp.o -c /home/yangrk/Cuculus/PLib/Logger.cpp
 
@@ -258,9 +373,14 @@ Cuculus_OBJECTS = \
 "CMakeFiles/Cuculus.dir/TaskThread.cpp.o" \
 "CMakeFiles/Cuculus.dir/CuculusTimer.cpp.o" \
 "CMakeFiles/Cuculus.dir/main.cpp.o" \
+"CMakeFiles/Cuculus.dir/ConServer.cpp.o" \
 "CMakeFiles/Cuculus.dir/Work.cpp.o" \
+"CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.o" \
 "CMakeFiles/Cuculus.dir/YearWork.cpp.o" \
 "CMakeFiles/Cuculus.dir/ConfSock.cpp.o" \
+"CMakeFiles/Cuculus.dir/ConSession.cpp.o" \
+"CMakeFiles/Cuculus.dir/DoTask.cpp.o" \
+"CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.o" \
 "CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/Logger_impl.cpp.o" \
 "CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/IniFile.cpp.o" \
 "CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/Logger.cpp.o"
@@ -271,9 +391,14 @@ Cuculus_EXTERNAL_OBJECTS =
 Cuculus: CMakeFiles/Cuculus.dir/TaskThread.cpp.o
 Cuculus: CMakeFiles/Cuculus.dir/CuculusTimer.cpp.o
 Cuculus: CMakeFiles/Cuculus.dir/main.cpp.o
+Cuculus: CMakeFiles/Cuculus.dir/ConServer.cpp.o
 Cuculus: CMakeFiles/Cuculus.dir/Work.cpp.o
+Cuculus: CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.o
 Cuculus: CMakeFiles/Cuculus.dir/YearWork.cpp.o
 Cuculus: CMakeFiles/Cuculus.dir/ConfSock.cpp.o
+Cuculus: CMakeFiles/Cuculus.dir/ConSession.cpp.o
+Cuculus: CMakeFiles/Cuculus.dir/DoTask.cpp.o
+Cuculus: CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.o
 Cuculus: CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/Logger_impl.cpp.o
 Cuculus: CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/IniFile.cpp.o
 Cuculus: CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/Logger.cpp.o
@@ -289,9 +414,14 @@ CMakeFiles/Cuculus.dir/build: Cuculus
 CMakeFiles/Cuculus.dir/requires: CMakeFiles/Cuculus.dir/TaskThread.cpp.o.requires
 CMakeFiles/Cuculus.dir/requires: CMakeFiles/Cuculus.dir/CuculusTimer.cpp.o.requires
 CMakeFiles/Cuculus.dir/requires: CMakeFiles/Cuculus.dir/main.cpp.o.requires
+CMakeFiles/Cuculus.dir/requires: CMakeFiles/Cuculus.dir/ConServer.cpp.o.requires
 CMakeFiles/Cuculus.dir/requires: CMakeFiles/Cuculus.dir/Work.cpp.o.requires
+CMakeFiles/Cuculus.dir/requires: CMakeFiles/Cuculus.dir/ConTaskHandle.cpp.o.requires
 CMakeFiles/Cuculus.dir/requires: CMakeFiles/Cuculus.dir/YearWork.cpp.o.requires
 CMakeFiles/Cuculus.dir/requires: CMakeFiles/Cuculus.dir/ConfSock.cpp.o.requires
+CMakeFiles/Cuculus.dir/requires: CMakeFiles/Cuculus.dir/ConSession.cpp.o.requires
+CMakeFiles/Cuculus.dir/requires: CMakeFiles/Cuculus.dir/DoTask.cpp.o.requires
+CMakeFiles/Cuculus.dir/requires: CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/ProtoMsg.pb.cc.o.requires
 CMakeFiles/Cuculus.dir/requires: CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/Logger_impl.cpp.o.requires
 CMakeFiles/Cuculus.dir/requires: CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/IniFile.cpp.o.requires
 CMakeFiles/Cuculus.dir/requires: CMakeFiles/Cuculus.dir/home/yangrk/Cuculus/PLib/Logger.cpp.o.requires

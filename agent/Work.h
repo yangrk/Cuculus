@@ -28,11 +28,10 @@
 #include "Logger.h"
 #include "ShareCycqueue.h"
 
-#define MAX_LEVEL 9
-
-
 using namespace std;
 using namespace plib;
+
+//const int  MAX_LEVEL=9;
 
 class Work
 {
@@ -48,13 +47,10 @@ protected:
 	void InitPath();
 	void InitIni( string & );
 	int InitDBConnection();
-	int SplitCommand(const string&, string, vector<string> *);
-	int GetJobConfig();
 
 	virtual int InitLog()=0;
 	virtual int GetTaskConfig()=0;
-	virtual int TimerFunc( struct tm & )=0;
-	int DoTask( );
+	virtual int TimerFunc( struct tm &, WorkTaskConfig *, string )=0;
 	
 	
 protected:
@@ -64,8 +60,6 @@ protected:
 	ServerPath m_serverPath;
 	mysqlpp::Connection *m_pDB;	
 
-	vector<WorkJobConfig> m_TaskConfigV[MAX_LEVEL];
-	vector<string> m_TaskChainV[MAX_LEVEL];
 	Logger log;
 
 };

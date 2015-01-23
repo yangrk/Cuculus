@@ -12,6 +12,7 @@
   History:
     <author>    <time>    <version >    <desc>
    yangrenke    2014/12/05     1.0     build this moudle 
+   yangrenke    2014/12/05     1.1     add the HashSetYearTaskID
 
 *************************************************************/
 
@@ -19,6 +20,7 @@
 #include <stdlib.h>
 #include "YearWork.h"
 #include "CuculusInc.h"
+#include "DoTask.h"
 
 using namespace boost;
 using namespace plib;
@@ -26,7 +28,7 @@ using namespace plib;
 extern JobItemHash jobHash;
 
 extern ShareBuffer<WorkTaskConfig *> yearJobBuf;
-
+extern hash_set<int> HashSetYearTaskID;
 
 /************************************************************
   
@@ -134,19 +136,24 @@ int YearWork::GetTaskConfig()
 		query<<sql;
                 mysqlpp::StoreQueryResult res = query.store();
 
-                WorkTaskConfig *pConfigSet = new WorkTaskConfig();
                 for (size_t i = 0; i < res.num_rows(); ++i)
                 {
+			WorkTaskConfig *pConfigSet = new WorkTaskConfig();		
+
 			pConfigSet->nId = res[i]["id"];
                         pConfigSet->strExecuteTime = (res[i]["execute_time"]).c_str();
                         pConfigSet->strTaskChain = (res[i]["task_chain"]).c_str();
                         
+			//将任务链插入处理队列
 			yearJobBuf.producer( pConfigSet );
-			//TaskConfigVc[ConfigSet.nLevelType].push_back( ConfigSet );
-                        
+			
+			//将任务链ID插入到hash_set中
+			HashSetYearTaskID.insert( pConfigSet->nId );                        
+
                 }
 
                 query.clear();
+
 
 		log.Info("YearWork::GetConfig(): get config data from db success!");
 	
@@ -195,21 +202,26 @@ int YearWork::GetTaskConfig()
   Others:  
 
 *************************************************************/
-int YearWork::TimerFunc( struct tm &tSetTime )
+int YearWork::TimerFunc( struct tm &tSetTime, WorkTaskConfig *pWTC, string strPath )
 {
+	
+	int nTaskID = pWTC->nId;
+	string strHadoopPath = strPath;	
+
 
 	time_t tNow;
 	tNow = time(NULL);
-	
+
 	time_t tSet = mktime(&tSetTime);
-	
+
 	long nInterval = difftime( tSet, tNow );
 
 	if( nInterval < 0 )
 	{
 		// 此时，今年已经过了设定的时间点，从明年开始
 		tSetTime.tm_year = tSetTime.tm_year+1;
-                nInterval = difftime( tSet, tNow );
+		time_t tSetNew = mktime(&tSetTime);
+                nInterval = difftime( tSetNew, tNow );
         }
 
 	boost::asio::io_service io;
@@ -224,41 +236,57 @@ int YearWork::TimerFunc( struct tm &tSetTime )
 	while(1)
         {
                 tDeadTimer.wait();
+		
+		hash_set<int>::iterator pos;  
+		pos = HashSetYearTaskID.find( nTaskID );
+		if (pos == HashSetYearTaskID.end()) 
+		{
+			//该任务已经被删除
+			break;
+		}
+
 
                 boost::posix_time::ptime expires = tDeadTimer.expires_at();
 
                 long nTotalSeconds = expires.time_of_day().total_seconds();
 		long nTotalMill = expires.time_of_day().total_milliseconds();
-                
-		//if( (nTotalSeconds%60) == 59 )
-                //{
-         		//定时器到点
-			DoTask();
-
+        
 	
-			//计算到下次的间隔时间
-			time_t tN;
-                	tN = time(NULL);
-                	tSetTime.tm_year = tSetTime.tm_year+1;
-			time_t tNextSet = mktime( &tSetTime );
-                	long nI = difftime( tNextSet, tN );
-                	tBaseTime += boost::posix_time::seconds(nI);
-                	tDeadTimer.expires_at(tBaseTime);
+         	//定时器到点
+		DoTask doT;
+		int nResult = doT.Init( pWTC, strHadoopPath );
+		if( 0 == nResult )
+		{
+			boost::thread tDoTask( boost::ref(doT) );
+			tDoTask.join();
+			
+		}
+		else
+		{
+			log.Error("YearWork::TimeFunc(): Init DoTask Thread failed !");
+		}
+		
 
-		log.Debug(" YearWork::TimerFunc(): Timer Starts!,[year=%d,month=%d,day=%d,hour=%d,min=%d,sec=%d]",tSetTime.tm_year,tSetTime.tm_mon,tSetTime.tm_mday,tSetTime.tm_hour,tSetTime.tm_min,tSetTime.tm_sec);
+		//计算到下次的间隔时间
+		time_t tN;
+                tN = time(NULL);
+                //tSetTime.tm_year = tSetTime.tm_year+1;
+		tSetTime.tm_min = tSetTime.tm_min + 2;
+		time_t tNextSet = mktime( &tSetTime );
+                long nI = difftime( tNextSet, tN );
+                tBaseTime += boost::posix_time::seconds(nI);
+                tDeadTimer.expires_at(tBaseTime);
+
+		log.Debug("YearWork::TimerFunc():The next time is:[year=%d,month=%d,day=%d,hour=%d,min=%d,sec=%d]",tSetTime.tm_year,tSetTime.tm_mon,tSetTime.tm_mday,tSetTime.tm_hour,tSetTime.tm_min,tSetTime.tm_sec);
 						
-		//}
-		//else
-		//{
-			//tBaseTime +=boost::posix_time::milliseconds(100);
-		//	tDeadTimer.expires_at(tBaseTime);
-		//}
-
 
 	}
-
-
+        
+	delete pWTC;
+	pWTC = NULL;
+	
 	return 0;
+
 }
 
 
@@ -285,31 +313,13 @@ int  YearWork::operator()()
 	{
 		WorkTaskConfig *pWTC = yearJobBuf.consumer();	
         	
-		
-		//解析任务链
-		vector<string> vLevelCommand;
-	
-		int nResult = SplitCommand( pWTC->strTaskChain, ";", &vLevelCommand );
-
-		printf(" vLevelCommand size: %d\n", vLevelCommand.size());
-
-		
-		if( 0 == nResult  )
-		{
-			for( int i=0; i<vLevelCommand.size(); i++ )
-			{
-				SplitCommand( vLevelCommand[i], ",", &m_TaskChainV[i] );
-			
-				printf(" m_TaskChainV[%d] size: %d\n", i, m_TaskChainV[i].size());
-			}
-		}
-		
-
-		//从数据库获取任务链中的任务的配置信息
-		GetJobConfig();
-
+		WorkTaskConfig *pWTCNew = new WorkTaskConfig();
+		pWTCNew->nId = pWTC->nId;
+		pWTCNew->strExecuteTime.assign(pWTC->strExecuteTime);
+		pWTCNew->strTaskChain.assign(pWTC->strTaskChain);
 
 		//启动定时器服务
+
 		string strMon = (pWTC->strExecuteTime).substr(0,2);
 		string strDay = (pWTC->strExecuteTime).substr(2,2);
 		string strHour = (pWTC->strExecuteTime).substr(4,2);
@@ -327,8 +337,8 @@ int  YearWork::operator()()
 		tmSetTime.tm_min = std::atoi( strMin.c_str() );
 		tmSetTime.tm_sec = std::atoi( strSec.c_str() );
 
-		boost::function<int (struct tm)> memberFunctionWrapper(boost::bind(&YearWork::TimerFunc, this, _1));
-		boost::thread tTimeServer(boost::bind(memberFunctionWrapper, tmSetTime));
+		boost::function<int (struct tm, WorkTaskConfig *, string)> memberFunctionWrapper(boost::bind(&YearWork::TimerFunc, this, _1,_2,_3));
+		boost::thread tTimeServer(boost::bind(memberFunctionWrapper, tmSetTime, pWTCNew,m_serverPath.strHadoopPath));
 
 		delete pWTC;
 		pWTC = NULL;

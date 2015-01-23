@@ -33,7 +33,7 @@ public:
 
 private:
 	virtual int InitLog();
-	int TimerFunc( struct tm & );
+	int TimerFunc( struct tm &, WorkTaskConfig *, string );
 	int GetTaskConfig();
 
 private:
