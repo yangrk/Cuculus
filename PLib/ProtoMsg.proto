@@ -1,0 +1,11 @@
+package protomsg;
+
+message TaskInfo{
+	required int32 nOperateType	=1;
+	required int32 nTaskType	=2;
+	optional int32 nTaskId		=3;
+	optional string strExeTime	=4;
+	optional string strTaskChain	=5;
+	optional string strComment	=6;
+	optional string strCreateTime	=7;
+}

@@ -50,7 +50,20 @@ namespace plib
 		string strHivePath;
 	} ServerPath;
 
+	typedef struct command_List
+	{
+		int nSize;
+		string * pListCommand;
+	} CommandList;
+
+	typedef struct task_config_list
+	{
+		int nSize;
+		WorkJobConfig * pListWJC;
+	} TaskConfigList;
+
  	typedef	hash_map<int, WorkJobConfig> JobItemHash;
+	const int  MAX_LEVEL=9;
 }
 
 
